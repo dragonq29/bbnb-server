@@ -1,17 +1,20 @@
 const express = require('express');
 const app = express();
+const axios = require('axios');
+// 객체 안에 하위 객체가 존재할때 : extended: true
+app.use(express.urlencoded({extended: true}));
+// 요청 본문이 객체 형식일때 파싱해줌
+app.use(express.json())
+app.post("/todayMenu_nList" , (req , res) => {
+    const data = req.body;
+    // const data = {
+    //     "end_dt": "20210621",
+    //     "st_dt": "20210621",
+    //     "bizplc_cd": "10095"
+    // };
 
-app.listen(8080, function(){
-    console.log('listening on 8080') // 잘 열리면 이 콘솔로그 출력됨
-});
-
-
-//누군가가 /pet 으로 방문을 하면
-//pet관련 안내문을 띄워줌
-app.get('/pet', function(요청, 응답){
-    응답.send('펫용품 쇼핑 할 수 있는 페이지 입니다.')
+    axios.post('https://sfv.hyundaigreenfood.com/smartfood/todaymenuGf/todayMenu_nList_pro.do', data)
+    .then(response => res.send({success : true , response: response.data}))
+    .catch(error => res.send({success : false , message: error.message}));
 })
-
-app.get('/', function(요청, 응답){
-    응답.sendFile(__dirname + '/index.html');
-})
+app.listen("3001",() => console.log("Server started"))
