@@ -9,8 +9,7 @@ app.use(express.json())
 app.use(cors())
 app.post("/smartfood/todaymenuGf/todayMenu_nList_pro.do" , (req , res) => {
     const data = req.body;
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://dragonq29.github.io");
     // const data = {
     //     "end_dt": "20210621",
     //     "st_dt": "20210621",
