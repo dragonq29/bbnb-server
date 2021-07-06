@@ -7,6 +7,11 @@ app.use(express.urlencoded({extended: true}));
 // 요청 본문이 객체 형식일때 파싱해줌
 app.use(express.json())
 app.use(cors())
+
+app.get("/health"), (_, res) => {
+    res.send({"status": "fully functional"});
+}
+
 app.post("/smartfood/todaymenuGf/todayMenu_nList_pro.do" , (req , res) => {
     const data = req.body;
     res.header("Access-Control-Allow-Origin", "https://dragonq29.github.io");
