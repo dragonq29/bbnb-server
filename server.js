@@ -8,9 +8,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json())
 app.use(cors())
 
-app.get("/health"), (_, res) => {
+app.get("/health", (_, res) => {
     res.send({"status": "fully functional"});
-}
+});
 
 app.post("/smartfood/todaymenuGf/todayMenu_nList_pro.do" , (req , res) => {
     const data = req.body;
