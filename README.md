@@ -22,14 +22,30 @@
 
 * https://certbot.eff.org/ 가서 해당하는 Software, System 설정해서 순서대로 수행
 
+* npm 설치
+
+  ```
+  sudo apt-get install npm
+  ```
+
+  
+
 * /etc/nginx/sites-available/default 파일에 443 부분에 아래와 같이 추가
 
 * ```
   location / {   #이걸 찾아가서
-     proxy_passhttp://127.0.0.1:8000; #이 부분 추가
+     proxy_pass http://127.0.0.1:8000; #이 부분 추가
   }
   ```
 
+* 실행
+
+  ```
+  nohup node server.js &
+  ```
+  
+  
+  
 * 참고
 
   * (Nginx 프록시 관련 좋은 참고 자료) https://velog.io/@jeff0720/2018-11-18-2111-%EC%9E%91%EC%84%B1%EB%90%A8-iojomvsf0n
